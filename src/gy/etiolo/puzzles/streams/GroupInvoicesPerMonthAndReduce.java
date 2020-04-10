@@ -21,18 +21,15 @@ public class GroupInvoicesPerMonthAndReduce {
     }
 
     private static Collection<Invoice> groupInvoices(List<Invoice> invoices) {
-
-        Map<Integer, Invoice> collect = invoices.stream().collect(groupingBy(i -> i.month,
+        return invoices.stream().collect(groupingBy(i -> i.month,
                 collectingAndThen(
                     reducing((Invoice i1, Invoice i2) -> new Invoice(i1.month, i1.amount + i2.amount)),
-                        Optional::get)));
-
-        return collect.values();
+                        Optional::get))).values();
     }
 
     private static class Invoice {
-        private int month;
-        private int amount;
+        int month;
+        int amount;
 
         public Invoice(int month, int amount) {
             this.month = month;
