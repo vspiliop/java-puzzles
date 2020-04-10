@@ -1,11 +1,11 @@
 package gy.etiolo.puzzles.streams;
 
-import static java.util.stream.Collectors.joining;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.joining;
 
 /**
  * Print anagrams together.
@@ -16,7 +16,7 @@ public class SortAnagramsV2 {
   public static void main(String... args) {
     List<String> anagrams = Arrays.asList("abc", "er", "cba", "bca", "re", "fdfd", "dfdf");
 
-    Map<String, List<String>> anagramGroups = anagrams.stream().collect(Collectors.groupingBy(word -> mask(word)));
+    Map<String, List<String>> anagramGroups = anagrams.stream().collect(groupingBy(word -> mask(word)));
 
     anagramGroups.values().stream().flatMap(List::stream).forEach(System.out::print);
   }

@@ -13,6 +13,6 @@ public class FactorialWithStreams {
     }
 
     private static long factorial(long n) {
-        return LongStream.rangeClosed(1, n).reduce(1l, (n1, n2) -> n1 * n2);
+        return LongStream.rangeClosed(1, n).reduce(1, (n1, n2) -> n1 * n2);
     }
 }
