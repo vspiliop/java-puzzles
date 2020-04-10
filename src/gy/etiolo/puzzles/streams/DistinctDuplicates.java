@@ -16,7 +16,8 @@ public class DistinctDuplicates {
   public static void main(String ... args) {
     List<Integer> input = Arrays.asList(1, 2, 5, 2, 5, 5, 1, 6, 9);
 
-    Map<Integer, Long> frequencies = input.stream().collect(Collectors.groupingBy(Integer::intValue, Collectors.counting()));
+    Map<Integer, Long> frequencies = input.stream().collect(Collectors.groupingBy(Integer::intValue,
+                                                                Collectors.counting()));
 
     frequencies.entrySet().stream().filter(entry -> entry.getValue() > 1).forEach(System.out::println);
 
