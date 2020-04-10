@@ -6,6 +6,16 @@ import java.util.function.Function;
 
 import static java.util.stream.Collectors.toMap;
 
+/**
+ * Join two maps based on their keys: If the is a common key use the value of map2, else use the value of map1.
+ *
+ * Result:
+ *
+ * 1=2_1
+ * 2=2_2
+ * 3=1_3
+ *
+ */
 public class Join2MapsBasedOnKeys {
     public static void main(String ... args) {
         Map<Integer, String> map1 = Map.of(1, "1_1", 2, "1_2", 3, "1_3");
