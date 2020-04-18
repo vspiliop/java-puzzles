@@ -16,16 +16,10 @@ public class PalindromeStringsManualReverseVersion {
   }
 
   private static boolean isPalindrome(String word) {
-
-    char[] charArray = word.toCharArray();
-
-    // for(int i = charArray.length - 1; i >= 0 ; i--) { ... }
-    String reversed = iterate(charArray.length - 1, i -> i >= 0 , i -> i - 1)
-            .mapToObj(i -> charArray[i])
+    return iterate(word.toCharArray().length - 1, i -> i >= 0 , i -> i - 1)
+            .mapToObj(i -> word.toCharArray()[i])
             .map(String::valueOf)
-            .collect(joining());
-
-    return reversed.equals(word);
+            .collect(joining()).equals(word);
   }
 
 }
