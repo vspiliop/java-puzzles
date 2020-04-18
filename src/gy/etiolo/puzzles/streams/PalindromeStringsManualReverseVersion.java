@@ -1,5 +1,6 @@
 package gy.etiolo.puzzles.streams;
 
+import static java.util.stream.Collectors.joining;
 import static java.util.stream.IntStream.iterate;
 
 /**
@@ -18,13 +19,13 @@ public class PalindromeStringsManualReverseVersion {
 
     char[] charArray = word.toCharArray();
 
-    StringBuilder builder = new StringBuilder();
-
     // for(int i = charArray.length - 1; i >= 0 ; i--) { ... }
-    iterate(charArray.length - 1, i -> i - 1).limit(charArray.length).mapToObj(i -> charArray[i])
-      .forEach(i -> builder.append(i));
+    String reversed = iterate(charArray.length - 1, i -> i >= 0 , i -> i - 1)
+            .mapToObj(i -> charArray[i])
+            .map(String::valueOf)
+            .collect(joining());
 
-    return builder.toString().equals(word);
+    return reversed.equals(word);
   }
 
 }
