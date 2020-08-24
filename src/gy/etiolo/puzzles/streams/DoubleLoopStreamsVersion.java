@@ -14,6 +14,8 @@ public class DoubleLoopStreamsVersion {
     List<Integer> numbers1 = Arrays.asList(1, 2, 3);
     List<Integer> numbers2 = Arrays.asList(3, 4);
 
+    // In Scala that would be:
+    // (1 to 3) flatMap (i => (3 to 4) filter (j => (i + j) % 3 == 0) map (j => (i, j)))
     List<int[]> pairs = numbers1.stream().flatMap(i -> numbers2.stream()
       .filter(j -> (i + j) % 3 == 0)
       .map(j -> new int[] { i, j }))
